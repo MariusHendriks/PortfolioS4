@@ -6,16 +6,20 @@ body {
   position: relative;
   overflow-x: hidden;
 }
-
+iframe{
+    width: -webkit-fill-available;
+    width: -moz-available;
+    height: 80vh;
+}
 body,
 html {
   height: 100%;
   background-color: #583e7e;
 }
-
-.nav .open > a {
-  background-color: transparent;
+.page-header{
+  text-align: center;
 }
+.naOff-canvas Push Menu For Bootstrap 
 
 .nav .open > a:hover {
   background-color: transparent;

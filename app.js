@@ -11,14 +11,11 @@ var config = {
 firebase.initializeApp(config);
 
 var db = firebase.firestore();
-var data = [];
-const doneLoading = false;
 
 db.collection("documents")
   .get()
   .then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
-      data.push(doc.data());
-      doneLoading = true;
+      
     });
   });
