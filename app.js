@@ -16,34 +16,53 @@ var allData = [];
 var uxuData = [];
 var devData = [];
 var ptmData = [];
-db.collection("documents")
-  .get()
-  .then(function(querySnapshot) {
-    querySnapshot.forEach(function(doc) {
-      var entry = [];
-      if (doc.data().course == "uxu") {
-        entry.push(doc.data().course);
-        entry.push(doc.data().link);
-        entry.push(doc.data().name);
-        uxuData.push(entry);
-      }
-      if (doc.data().course == "dev") {
-        entry.push(doc.data().course);
-        entry.push(doc.data().link);
-        entry.push(doc.data().name);
-        devData.push(entry);
-      }
-      if (doc.data().course == "ptm") {
-        entry.push(doc.data().course);
-        entry.push(doc.data().link);
-        entry.push(doc.data().name);
-        ptmData.push(entry);
-      }
-
-      console.log(uxuData);
+var scoData = [];
+doSomeShit();
+async function getData() {
+  db.collection("documents")
+    .get()
+    .then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        var entry = [];
+        if (doc.data().course == "uxu") {
+          entry.push(doc.data());
+          uxuData.push(entry);
+        } else if (doc.data().course == "dev") {
+          entry.push(doc.data());
+          devData.push(entry);
+        } else if (doc.data().course == "ptm") {
+          entry.push(doc.data());
+          ptmData.push(entry);
+        } else if (doc.data().course == "sco") {
+          entry.push(doc.data());
+          scoData.push(entry);
+        } else {
+          console.log("Error");
+        }
+      });
+      allData.push(uxuData);
+      allData.push(ptmData);
+      allData.push(devData);
+      allData.push(scoData);
+      fillData();
+      return;
     });
-    allData.push(uxuData);
-    allData.push(ptmData);
-    allData.push(devData);
-    console.log(allData);
-  });
+}
+async function doSomeShit() {
+  await getData();
+}
+
+function fillData() {
+  for (i = 0; i < uxuData.length; i++) {
+    $("#uxu").prepend("<li><a href='#'>" + uxuData[i][0].name + "</a></li>");
+  }
+  for (i = 0; i < ptmData.length; i++) {
+    $("#ptm").prepend("<li><a href='#'>" + ptmData[i][0].name + "</a></li>");
+  }
+  for (i = 0; i < devData.length; i++) {
+    $("#dev").prepend("<li><a href='#'>" + devData[i][0].name + "</a></li>");
+  }
+  for (i = 0; i < scoData.length; i++) {
+    $("#sco").prepend("<li><a href='#'>" + scoData[i][0].name + "</a></li>");
+  }
+}
