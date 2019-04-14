@@ -12,10 +12,38 @@ firebase.initializeApp(config);
 
 var db = firebase.firestore();
 
+var allData = [];
+var uxuData = [];
+var devData = [];
+var ptmData = [];
 db.collection("documents")
   .get()
   .then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
-      
+      var entry = [];
+      if (doc.data().course == "uxu") {
+        entry.push(doc.data().course);
+        entry.push(doc.data().link);
+        entry.push(doc.data().name);
+        uxuData.push(entry);
+      }
+      if (doc.data().course == "dev") {
+        entry.push(doc.data().course);
+        entry.push(doc.data().link);
+        entry.push(doc.data().name);
+        devData.push(entry);
+      }
+      if (doc.data().course == "ptm") {
+        entry.push(doc.data().course);
+        entry.push(doc.data().link);
+        entry.push(doc.data().name);
+        ptmData.push(entry);
+      }
+
+      console.log(uxuData);
     });
+    allData.push(uxuData);
+    allData.push(ptmData);
+    allData.push(devData);
+    console.log(allData);
   });
