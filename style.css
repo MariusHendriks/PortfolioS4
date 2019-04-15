@@ -6,22 +6,20 @@ body {
   position: relative;
   overflow-x: hidden;
 }
-iframe{
-    width: -webkit-fill-available;
-    width: -moz-available;
-    height: 80vh;
+iframe {
+  width: -webkit-fill-available;
+  width: -moz-available;
+  height: 80vh;
 }
 body,
 html {
   height: 100%;
   background-color: #583e7e;
 }
-.page-header{
+.page-header {
   text-align: center;
 }
-.naOff-canvas Push Menu For Bootstrap 
-
-.nav .open > a:hover {
+.naOff-canvas Push menu For Bootstrap .nav .open > a:hover {
   background-color: transparent;
 }
 
@@ -115,9 +113,8 @@ html {
   z-index: -1;
 }
 
-.sidebar-nav li:first-child a {
-  background-color: #1a1a1a;
-  color: #ffffff;
+.sidebar-nav li:first-child:before {
+  background-color: #52418a;
 }
 
 .sidebar-nav li:nth-child(2):before {

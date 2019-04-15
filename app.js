@@ -54,15 +54,59 @@ async function doSomeShit() {
 
 function fillData() {
   for (i = 0; i < uxuData.length; i++) {
-    $("#uxu").prepend("<li><a href='#'>" + uxuData[i][0].name + "</a></li>");
+    link = uxuData[i][0].link;
+    name = uxuData[i][0].name;
+    console.log(uxuData[i][0].link);
+    $("#uxu").prepend(
+      "<li  class='listItem'><a onclick='updateIframe(\"" +
+        link +
+        "\")' href='#'>" +
+        name +
+        "</a></li>"
+    );
   }
   for (i = 0; i < ptmData.length; i++) {
-    $("#ptm").prepend("<li><a href='#'>" + ptmData[i][0].name + "</a></li>");
+    link = ptmData[i][0].link;
+    name = ptmData[i][0].name;
+    console.log(ptmData[i][0].link);
+    $("#ptm").prepend(
+      "<li class='listItem'><a onclick='updateIframe(\"" +
+        link +
+        "\")' href='#'>" +
+        name +
+        "</a></li>"
+    );
   }
   for (i = 0; i < devData.length; i++) {
-    $("#dev").prepend("<li><a href='#'>" + devData[i][0].name + "</a></li>");
+    link = devData[i][0].link;
+    name = devData[i][0].name;
+    console.log(devData[i][0].link);
+    $("#dev").prepend(
+      "<li class='listItem'><a onclick='updateIframe(\"" +
+        link +
+        "\")' href='#'>" +
+        name +
+        "</a></li>"
+    );
   }
   for (i = 0; i < scoData.length; i++) {
-    $("#sco").prepend("<li><a href='#'>" + scoData[i][0].name + "</a></li>");
+    link = scoData[i][0].link;
+    name = scoData[i][0].name;
+    console.log(scoData[i][0].link);
+    $("#sco").prepend(
+      "<li class='listItem'><a onclick='updateIframe(\"" +
+        link +
+        "\")' href='#'>" +
+        name +
+        "</a></li>"
+    );
   }
+}
+
+function updateIframe(linkMid) {
+  LinkStart = "https://docs.google.com/document/d/";
+  LinkEnd = "/preview";
+  newLink = LinkStart + linkMid + LinkEnd;
+  console.log(newLink);
+  document.getElementById("iFrame").src = newLink;
 }
